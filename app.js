@@ -7,8 +7,19 @@ angular.module('DemoApp', ['ngMaterial'])
             url: url + 'from=OSL?direction=d&start=2016-02-04T17:00&end=2016-02-04T17:59&language=no',
             headers: {
                 'Access-Control-Allow-Origin': '*'
-            },
-        }
+            }
+        };
+
+        $scope.delayed = function(flight){
+            if( flight.ScheduleChanged){
+
+                console.log("Delayed: ", flight);
+            }
+            else{
+                console.log("On time: ", flight)
+            }
+            return flight.ScheduleChanged;
+        };
 
 
         $http(reqest).then(

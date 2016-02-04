@@ -9,6 +9,9 @@
             padding:5px;
             background-color: #acf;
         }
+        .on-time{
+            background-color: #afc;
+        }
     </style>
     <!-- Angular Material CSS CDN -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
@@ -35,9 +38,10 @@
     <md-content layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
         <md-whiteframe ng-repeat="flight in data.Flights" class="md-whiteframe-0dp" flex-sm="100" flex-gt-sm="50" flex-gt-md="33" layout-align="center center">
             <div>
-                <div class="flight">
+                <div class="{{delayed(flight) ? 'flight' : 'flight on-time' }}">
                     <h2>{{flight.FromAirportName}} - {{flight.ToAirportName}}</h2>
                     <h3>{{flight.Flight.ScheduleTime | date : 'EEE dd MMM yyyy HH:mm' }}</h3>
+                    <h4>{{flight.StatusMessage}}</h4>
                 </div>
             </div>
         </md-whiteframe>
