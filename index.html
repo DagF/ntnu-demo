@@ -3,6 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Demo</title>
+    <style>
+        .flight{
+            margin: 5px;
+            padding:5px;
+            background-color: #acf;
+        }
+    </style>
     <!-- Angular Material CSS CDN -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
 
@@ -13,27 +20,30 @@
 
     <!-- Angular Material Javascript CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
-    
+
     <!-- UI-router Javascript CDN -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
 </head>
 <body ng-app="DemoApp">
-    <div ng-controller="AppCtrl" layout="column">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2 class="md-flex">Hei</h2>
-            </div>
-        </md-toolbar>
-        
-        <md-content layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
-            <md-whiteframe ng-repeat="flight in data.Flights" class="md-whiteframe-1dp" flex-sm="100" flex-gt-sm="50" flex-gt-md="33" layout-align="center center">
-                <div>
-                    <h2>{{flight.FromAirportName}} - {{flight.ToAirportName}}</h2>
-                </div>
-            </md-whiteframe>
-        </md-content>
+<div ng-controller="AppCtrl" layout="column">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Hei</h2>
+        </div>
+    </md-toolbar>
 
-    </div>
-    <script src="app.js"></script>
+    <md-content layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak>
+        <md-whiteframe ng-repeat="flight in data.Flights" class="md-whiteframe-0dp" flex-sm="100" flex-gt-sm="50" flex-gt-md="33" layout-align="center center">
+            <div>
+                <div class="flight">
+                    <h2>{{flight.FromAirportName}} - {{flight.ToAirportName}}</h2>
+                    <h3>{{flight.Flight.ScheduleTime | date : 'EEE dd MMM yyyy HH:mm' }}</h3>
+                </div>
+            </div>
+        </md-whiteframe>
+    </md-content>
+
+</div>
+<script src="app.js"></script>
 </body>
 </html>
